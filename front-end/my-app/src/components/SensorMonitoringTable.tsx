@@ -64,7 +64,7 @@ const SensorMonitoringTable: React.FC = () => {
         </Table>
       </CardContent>
       <CardFooter>
-        <Button variant="outline">View Details</Button>
+        <Button variant="outline">Detalhes</Button>
       </CardFooter>
     </Card>
   );
