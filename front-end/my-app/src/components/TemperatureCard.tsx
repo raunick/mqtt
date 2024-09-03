@@ -44,7 +44,7 @@ const TemperatureCard: React.FC = () => {
   };
 
   return (
-    <Card className='w-full max-w-sm'>
+    <Card className='w-full '>
       <CardHeader>
         <CardTitle>Temperature</CardTitle>
         <CardDescription>Atualização em tempo real 🟢</CardDescription>

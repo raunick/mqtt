@@ -44,7 +44,7 @@ const HumidityCard: React.FC = () => {
   };
 
   return (
-    <Card className='w-full max-w-sm'>
+    <Card className='w-full '>
       <CardHeader>
         <CardTitle>Humidity</CardTitle>
         <CardDescription>Atualização em tempo real 🟢</CardDescription>

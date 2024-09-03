@@ -95,7 +95,7 @@ const VPDCard: React.FC = () => {
   };
 
   return (
-    <Card className="w-full max-w-sm">
+    <Card className="w-full ">
       <CardHeader>
         <div className="flex justify-between items-center">
           <CardTitle className="">VPD</CardTitle>

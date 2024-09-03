@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Button } from './components/ui/button';
-import {  BellIcon, ChevronDownIcon, GearIcon, HomeIcon, InfoCircledIcon, PlusIcon } from '@radix-ui/react-icons';
+import {  BellIcon, ChevronDownIcon, CodeSandboxLogoIcon, GearIcon, HomeIcon, InfoCircledIcon, PlusIcon } from '@radix-ui/react-icons';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from './components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from './components/ui/avatar';import HumidityCard from './components/HumidityCard';
 import TemperatureCard from './components/TemperatureCard';
 import VPDCard from './components/VpdCard';
 import SensorMonitoringTable from './components/SensorMonitoringTable';
+import ParticleCube from './components/ParticleCube';
+import { Outlet } from "react-router-dom";
 
 
 function App() {
@@ -54,7 +56,7 @@ function App() {
           <ul className="grid gap-1 p-4">
             <li>
               <a
-                href="#"
+                href="/Dashboard"
                 className="flex items-center gap-3 rounded-md px-3 py-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
               >
                 <HomeIcon className="h-5 w-5" />
@@ -63,7 +65,7 @@ function App() {
             </li>
             <li>
               <a
-                href="#"
+                href="/Sensors"
                 className="flex items-center gap-3 rounded-md px-3 py-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
               >
                 <InfoCircledIcon className="h-5 w-5" />
@@ -72,32 +74,25 @@ function App() {
             </li>
             <li>
               <a
-                href="#"
+                href="/Adminstrator"
                 className="flex items-center gap-3 rounded-md px-3 py-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
               >
                 <GearIcon className="h-5 w-5" />
                 Configuração
               </a>
             </li>
+            <li>
+              <a
+                href="/3d"
+                className="flex items-center gap-3 rounded-md px-3 py-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+              >
+                <CodeSandboxLogoIcon className="h-5 w-5" />
+                3D Simulator - BETA
+              </a>
+            </li>
           </ul>
         </nav>
-        <main className="p-5 grid gap-6">
-          <div className="flex items-center justify-between ">
-            <h2 className="ml-2 text-5xl font-bold">Sensores</h2>
-            <Button>
-              <PlusIcon className="h-5 w-5 mr-2" />
-              Add Sensor
-            </Button>
-          </div>
-          <div className='grid gap-6  md:grid-cols-3'>
-            <TemperatureCard />
-            <HumidityCard />
-            <VPDCard />
-          </div>
-          <div className="grid gap-6">
-            <SensorMonitoringTable/>
-          </div>
-        </main>
+        <Outlet />
       </div>
     </div>
   );
