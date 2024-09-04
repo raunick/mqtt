@@ -2,11 +2,9 @@ import { useEffect, useState } from 'react';
 import { Button } from './components/ui/button';
 import {  BellIcon, ChevronDownIcon, CodeSandboxLogoIcon, GearIcon, HomeIcon, InfoCircledIcon, PlusIcon } from '@radix-ui/react-icons';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from './components/ui/dropdown-menu';
-import { Avatar, AvatarFallback, AvatarImage } from './components/ui/avatar';import HumidityCard from './components/HumidityCard';
-import TemperatureCard from './components/TemperatureCard';
-import VPDCard from './components/VpdCard';
-import SensorMonitoringTable from './components/SensorMonitoringTable';
-import ParticleCube from './components/ParticleCube';
+import { Avatar, AvatarFallback, AvatarImage } from './components/ui/avatar';
+
+
 import { Outlet } from "react-router-dom";
 
 

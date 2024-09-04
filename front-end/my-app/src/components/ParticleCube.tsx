@@ -16,8 +16,8 @@ const ParticleCube: React.FC<ParticleCubeProps> = ({ apiEndpoint }) => {
             try {
                 const response = await fetch(apiEndpoint);
                 const sensorData = await response.json();
-                const temperatura = parseFloat(sensorData.find(sensor => sensor.name === "Sys/sensors/temperature").value);
-                const umidade = parseFloat(sensorData.find(sensor => sensor.name === "Sys/sensors/humidity_air").value);
+                const temperatura = parseFloat(sensorData.find((sensor: { name: string; }) => sensor.name === "Sys/sensors/temperature").value);
+                const umidade = parseFloat(sensorData.find((sensor: { name: string; }) => sensor.name === "Sys/sensors/humidity_air").value);
                 setData({ temperatura, umidade });
             } catch (error) {
                 console.error("Failed to fetch sensor data", error);

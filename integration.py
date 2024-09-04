@@ -70,6 +70,7 @@ def get_sensor_data(sensor_type: str):
     
     sensors = [{"id": row["id"], "type": row["sensor_type"], "value": row["sensor_value"]} for row in rows]
     
+    
     try:
         current_value = float(sensors[0]["value"])
         previous_value = float(sensors[1]["value"])
@@ -78,6 +79,7 @@ def get_sensor_data(sensor_type: str):
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     
+        
     return JSONResponse(content={
         "current_id": sensors[0]["id"],
         "previous_id": sensors[1]["id"],
@@ -86,6 +88,42 @@ def get_sensor_data(sensor_type: str):
         "diference": diference,
         "percentage_change": percentage_change,
     })
+
+@app.get('/sensor/modulos/rele')
+def get_sensor_data():
+    sensor_type = 'Modulo Rele'
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT id, sensor_type, sensor_value, timestamp FROM messages WHERE sensor_type = ? ORDER BY timestamp DESC LIMIT 2", 
+        (sensor_type,)
+    )
+    rows = cursor.fetchall()
+    conn.close()
+    
+    if len(rows) < 2:
+        raise HTTPException(status_code=404, detail="Dados insuficientes para o tipo de sensor fornecido")
+    
+    sensors = [{"id": row["id"], "type": row["sensor_type"], "value": row["sensor_value"], "timestamp": row["timestamp"]    } for row in rows]
+    
+    
+    try:
+        current_value = sensors[0]["value"]
+        previous_value = sensors[1]["value"]
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    
+        
+    return JSONResponse(content={
+        "current_id": sensors[0]["id"],
+        "previous_id": sensors[1]["id"],
+        "current_value": current_value,
+        "previous_value": previous_value,
+        "timestamp": sensors[0]["timestamp"],
+        "diference": '-',
+        "percentage_change": '-',
+    })
+
 import math
 
 def calculate_vpd(temperature, relative_humidity):

@@ -1,31 +1,78 @@
 import React from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { CalendarIcon, DownloadIcon } from '@radix-ui/react-icons';
+import AreaChartComponent from '@/components/AreaChartComponent';
+import RadialChartText from '../components/RadialChartText';
+import LineChartComponent from '@/components/LineChartComponent';
+import BarChartComponent from '@/components/BarChartComponent';
+import RadarChartComponet from '@/components/RadarChartComponet';
+import SensorMonitoringTable from '@/components/SensorMonitoringTable';
 
 const Dashboard: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center p-4">
-      <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full text-center">
-        <h1 className="text-6xl font-bold text-red-500 mb-4">Dashboard</h1>
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Opa! Redirecionamento Inesperado</h2>
-        <p className="text-gray-600 mb-6">
-          Parece que você foi redirecionado para cá... mas não se preocupe, não é o fim do mundo!
-        </p>
-        <div className="text-5xl mb-6">🕵️‍♂️🚀</div>
-        <p className="text-gray-700 mb-6">
-          Nossos detetives cibernéticos estão investigando este redirecionamento misterioso.
-          Enquanto isso, que tal uma piada?
-        </p>
-        <p className="text-gray-800 italic mb-8">
-          "quando voce perceber que o computador esta velho ?
-          a placa mae ja virou avó "
-        </p>
-        <a 
-          href="/" 
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300"
-        >
-          Voltar para a Página Inicial
-        </a>
+    <main className="p-6">
+      <div className="flex items-center justify-between">
+        <h1 className="ml-2 text-5xl font-bold">Dashboard</h1>
+        <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
+            <CalendarIcon className="h-5 w-5" />
+            <span>Jan 20, 2023 - Feb 09, 2023</span>
+          </div>
+          <Button>
+            <DownloadIcon className="h-5 w-5 mr-2" />
+            Download
+          </Button>
+        </div>
       </div>
-    </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+        <Card className="">
+          <CardHeader>
+            <CardTitle>Total Mensagens enviadas</CardTitle>
+            <CardDescription className='text-3xl text-black font-bold'>45.231.89</CardDescription>
+          </CardHeader>
+          <CardContent className='text-gray-500'>+20.1% do ultimo mês</CardContent>
+        </Card>
+
+        <Card className="">
+          <CardHeader>
+            <CardTitle>Total de topicos inscritos</CardTitle>
+            <CardDescription className='text-3xl text-black font-bold'>6</CardDescription>
+          </CardHeader>
+          <CardContent   className='text-gray-500'>+0.1% do ultimo mês</CardContent>
+        </Card>
+
+        <Card className="">
+          <CardHeader>
+            <CardTitle>Falhas de conexão</CardTitle>
+            <CardDescription className='text-3xl text-black font-bold'>5</CardDescription>
+          </CardHeader>
+          <CardContent  className='text-gray-500'>-19% do ultimo mês</CardContent>
+        </Card>
+
+        <Card className="">
+          <CardHeader>
+            <CardTitle>Total relatorio emitidos</CardTitle>
+            <CardDescription className='text-3xl text-black font-bold'>573</CardDescription>
+          </CardHeader>
+          <CardContent className='text-gray-500'>+20% do ultimo mês</CardContent>
+        </Card>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+        <RadialChartText />        
+        <RadarChartComponet />
+        <LineChartComponent />
+        <BarChartComponent />
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+        <AreaChartComponent />
+
+        <SensorMonitoringTable  />
+      </div>
+
+    </main>
   );
 };
 

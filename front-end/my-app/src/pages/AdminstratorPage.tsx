@@ -1,31 +1,184 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { CalendarIcon, DownloadIcon, PlusIcon } from '@radix-ui/react-icons';
 
 const Adminstrator: React.FC = () => {
+  const [pollingInterval, setPollingInterval] = useState('5');
+
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center p-4">
-      <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full text-center">
-        <h1 className="text-6xl font-bold text-red-500 mb-4">Adminstrator</h1>
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Opa! Redirecionamento Inesperado</h2>
-        <p className="text-gray-600 mb-6">
-          Parece que você foi redirecionado para cá... mas não se preocupe, não é o fim do mundo!
-        </p>
-        <div className="text-5xl mb-6">🕵️‍♂️🚀</div>
-        <p className="text-gray-700 mb-6">
-          Nossos detetives cibernéticos estão investigando este redirecionamento misterioso.
-          Enquanto isso, que tal uma piada?
-        </p>
-        <p className="text-gray-800 italic mb-8">
-          "quando voce perceber que o computador esta velho ?
-          a placa mae ja virou avó "
-        </p>
-        <a 
-          href="/" 
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300"
-        >
-          Voltar para a Página Inicial
-        </a>
+    <main className="p-6">
+    <div className="flex items-center justify-between">
+      <h1 className="ml-2 text-5xl font-bold">Configurações</h1>
+      <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2">
+          <CalendarIcon className="h-5 w-5" />
+          <span>Jan 20, 2023 - Feb 09, 2023</span>
+        </div>
+        <Button>
+          <PlusIcon className="h-5 w-5 mr-2" />
+          Add Sensor
+        </Button>
       </div>
     </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-6">
+        <Card className="w-full">
+          <CardHeader>
+            <CardTitle>Configurações Banco de dados</CardTitle>
+            <CardDescription>Status do Sistema 🟢</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-col space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Polling Interval</label>
+                <select
+                  value={pollingInterval}
+                  onChange={(e) => setPollingInterval(e.target.value)}
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                >
+                  <option value="5">5 seconds</option>
+                  <option value="10">10 seconds</option>
+                  <option value="60">1 minute</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Nome do Banco</label>
+                <input
+                  type="text"
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Enter group name"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Caminho</label>
+                <input
+                  type="text"
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Enter location"
+                />
+              </div>
+              <div>
+              <label className="block text-sm font-medium text-gray-700">Tipo do banco</label>
+                <select
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                >
+                  <option value="admin">Sql</option>
+                  <option value="user">NoSql</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Usuario</label>
+                <select
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                >
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+                </select>
+              </div>
+            </div>
+          </CardContent>
+          <CardFooter>
+            <div>
+            <Button variant={'outline'}>Save</Button> <Button variant={'destructive'}>Delete</Button> 
+            </div>
+          </CardFooter>
+        </Card>
+        <Card className="w-full">
+          <CardHeader>
+            <CardTitle>Configurações API</CardTitle>
+            <CardDescription>Status do Sistema 🟢</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-col space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Polling Interval</label>
+                <select
+                  value={pollingInterval}
+                  onChange={(e) => setPollingInterval(e.target.value)}
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                >
+                  <option value="5">5 seconds</option>
+                  <option value="10">10 seconds</option>
+                  <option value="60">1 minute</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Sensor Group</label>
+                <input
+                  type="text"
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Enter group name"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Location</label>
+                <input
+                  type="text"
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Enter location"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Access Level</label>
+                <select
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                >
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+                </select>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="w-full">
+          <CardHeader>
+            <CardTitle>Configurações Front-end</CardTitle>
+            <CardDescription>Status do Sistema 🟢</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-col space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Polling Interval</label>
+                <select
+                  value={pollingInterval}
+                  onChange={(e) => setPollingInterval(e.target.value)}
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                >
+                  <option value="5">5 seconds</option>
+                  <option value="10">10 seconds</option>
+                  <option value="60">1 minute</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Sensor Group</label>
+                <input
+                  type="text"
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Enter group name"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Location</label>
+                <input
+                  type="text"
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Enter location"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Access Level</label>
+                <select
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                >
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+                </select>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </main>
   );
 };
 
